@@ -83,7 +83,7 @@ class RedisStore extends Store {
     try {
       let data = await this.client.get(key)
       if (!data) return cb()
-      return cb(null, this.serializer.parse(data))
+      return cb(null, await this.serializer.parse(data))
     } catch (err) {
       return cb(err)
     }
